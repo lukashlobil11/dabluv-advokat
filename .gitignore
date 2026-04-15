@@ -1,0 +1,25 @@
+# Case s reálnými údaji — NIKDY neuploadovat na GitHub
+cases/*/zadani/
+cases/*/reserse/
+cases/*/analyza/
+cases/*/argumentace/
+cases/*/oponentura/
+cases/*/final/
+
+# Jen template zůstane verzovaný
+!cases/_template/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Lokální konfig
+.env
+.env.local
