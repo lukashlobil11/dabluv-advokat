@@ -158,10 +158,10 @@ Tento workspace je nástrojem na podporu právní analýzy. Není to právní po
 
 ## 📝 Licence
 
-[Doplnit podle preference — např. MIT, CC BY-NC-SA, Private]
+MIT License — viz [LICENSE](LICENSE) pro úplné znění.
 
 ---
 
-**Autor:** [Tvoje jméno / kontakt]  
+**Autor:** Lukáš Hlobil  
 **Poslední aktualizace:** duben 2026  
 **Technologie:** Claude AI, Python (volitelně), Markdown
