@@ -1,0 +1,36 @@
+case_id: "[NAZEV-CASE]"
+confidentiality: "advokatni-duverne"
+human_signoff_required: true
+
+client:
+  role: "[prijemce-dotace|zadavatel|dodavatel|jiny]"
+
+procedure:
+  authority: "[financni-urad|uohs|poskytovatel|jiny]"
+  stage: "[zahajeni|vyzva|dvkz|zprava|platebni-vymer|odvolani|prominuti|jina]"
+  delivered_at: "[YYYY-MM-DD]"
+  response_deadline: "[YYYY-MM-DD|NELZE-URCIT]"
+
+grant:
+  provider: "[DOPLNIT]"
+  programme: "[DOPLNIT]"
+  decision_id: "[DOPLNIT]"
+  decision_date: "[YYYY-MM-DD]"
+  funding_source: "[statni-rozpocet|narodni-fond|fond-eu|jiny]"
+  amount_czk: "[DOPLNIT]"
+
+procurement:
+  title: "[DOPLNIT]"
+  regime: "[ZZVZ|PpVD|oba|jiny]"
+  procedure_started_at: "[YYYY-MM-DD]"
+  rules_version: "[DOPLNIT]"
+  sanctions_version: "[DOPLNIT]"
+
+control:
+  alleged_breach: "[DOPLNIT]"
+  alleged_breach_date: "[YYYY-MM-DD|DOPLNIT]"
+  proposed_rate_percent: "[DOPLNIT]"
+  proposed_base_czk: "[DOPLNIT]"
+  proposed_levy_czk: "[DOPLNIT]"
+
+applicable_law_verified_as_of: "[YYYY-MM-DD]"
