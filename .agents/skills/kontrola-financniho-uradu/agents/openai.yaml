@@ -1,0 +1,4 @@
+interface:
+  display_name: "Kontrola finančního úřadu"
+  short_description: "Dotační kontroly a rozpočtová kázeň"
+  default_prompt: "Použij $kontrola-financniho-uradu k analýze kontrolního dokumentu a přípravě procesně bezpečné obrany."

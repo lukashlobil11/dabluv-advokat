@@ -1,33 +1,53 @@
-# Právní rámec — Klíčová ustanovení
+# Právní rámec - orientační mapa
 
-## ZZVZ — zákon č. 134/2016 Sb.
-### Často používané §:
-- **§ 4** — definice zadavatele
-- **§ 6** — základní zásady (transparentnost, přiměřenost, rovné zacházení, nediskriminace)
-- **§ 16–18** — vymezení předmětu, zákaz dělení
-- **§ 36** — zadávací podmínky
-- **§ 73–88** — kvalifikace
-- **§ 89–95** — technické podmínky
-- **§ 114–119** — hodnotící kritéria
-- **§ 211** — požadavky na komunikaci
-- **§ 222** — změny závazků ze smlouvy
-- **§ 241–247** — námitky
-- **§ 248–266** — řízení před ÚOHS
-- **§ 268** — správní delikty (přestupky)
+Tento soubor není náhradou účinného znění. Před použitím vždy ověř znění k rozhodnému dni v [e-Sbírce](https://e-sbirka.gov.cz/).
 
-### Zásada přiměřenosti (§ 6 odst. 1 ZZVZ)
-Klíčová zásada pro většinu sporů. ÚOHS posuzuje:
-- Vztah kvalifikace k předmětu a hodnotě VZ
-- Zda omezení hospodářské soutěže je proporcionální legitímnímu cíli
-- Objektivní odůvodnitelnost požadavku
+## ZZVZ - zákon č. 134/2016 Sb.
 
-## Správní řád — zákon č. 500/2004 Sb.
-- **§ 152** — rozklad
-- **§ 89** — přezkumné řízení
-- Subsidiarita vůči ZZVZ
+- **§ 4** - zadavatel
+- **§ 6** - zásady zadávání
+- **§ 16 až 18** - předpokládaná hodnota a související plnění
+- **§ 36** - zadávací podmínky
+- **§ 73 až 88** - kvalifikace
+- **§ 89 až 95** - technické podmínky
+- **§ 113** - mimořádně nízká nabídková cena
+- **§ 114 až 119** - hodnocení nabídek
+- **§ 211** - komunikace
+- **§ 222** - změny závazku ze smlouvy
+- **§ 241 až 247** - námitky
+- **§ 248 a násl.** - dohled a řízení před ÚOHS
 
-## Procesní lhůty — kritické termíny
-- Námitky: 15 dnů od doručení rozhodnutí / od konce lhůty pro podání nabídek (§ 242 ZZVZ)
-- Rozhodnutí o námitkách: 15 dnů od doručení námitek (§ 245 ZZVZ)
-- Návrh na ÚOHS: 10 dnů od doručení rozhodnutí o námitkách (§ 251 ZZVZ)
-- Kauce: 1 % nabídkové ceny / 100 000 Kč – 10 000 000 Kč (§ 255 ZZVZ)
+Lhůty podle § 242 a § 251 závisejí na typu napadeného úkonu a procesní situaci. Nepoužívej jednu univerzální zkratku; sestav časovou osu a ověř konkrétní odstavec.
+
+## Správní řád - zákon č. 500/2004 Sb.
+
+- **§ 81 až 93** - odvolací řízení
+- **§ 94 až 99** - přezkumné řízení
+- **§ 152** - rozklad
+
+## Daňový řád - zákon č. 280/2009 Sb.
+
+- **§ 85 až 88a** - daňová kontrola, kontrolní zjištění a ukončení
+- **§ 86** - práva a povinnosti při kontrole
+- **§ 88 odst. 2 až 5** - vyjádření k dosavadnímu výsledku kontrolního zjištění
+- **§ 92** - dokazování
+
+Konkrétní délku lhůty, opravný prostředek a účinek podání vždy ověř podle dokumentu a účinného znění.
+
+## Rozpočtová pravidla - zákon č. 218/2000 Sb.
+
+- **§ 14** - rozhodnutí o poskytnutí dotace a možnost stanovení nižšího odvodu
+- **§ 44** - porušení rozpočtové kázně
+- **§ 44a** - odvod, penále, informace a prominutí
+
+Při kontrole dotace ověř zejména skutkovou podstatu, den porušení, rozhodnou dotační podmínku, nižší odvod, základ, sazbu, zaokrouhlení, penále a rozhodnou verzi sankční kategorizace.
+
+## Unijní rozměr
+
+U prostředků dotýkajících se finančních zájmů EU prověř přímo použitelné předpisy a judikaturu Soudního dvora, zejména pravidla nesrovnalosti a běhu lhůt. Neodvozuj počátek nebo přerušení lhůty bez úplné časové osy.
+
+## Kauce u návrhu k ÚOHS
+
+Výši kauce ověř vždy aktuálně u ÚOHS a v § 255 ZZVZ. Je nutné rozlišit procentní výpočet s minimem a maximem, paušální částku při nemožnosti stanovit cenu a zvláštní režim návrhu na zákaz plnění smlouvy.
+
+Aktuální přehled: [ÚOHS - kauce a správní poplatek](https://uohs.gov.cz/cs/verejne-zakazky/moznosti-obrany-proti-postupu-zadavatele/kauce-a-spravni-poplatek.html).
