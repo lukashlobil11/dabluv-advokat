@@ -5,9 +5,21 @@ cases/*/analyza/
 cases/*/argumentace/
 cases/*/oponentura/
 cases/*/final/
+cases/*/README.md
 
 # Jen template zůstane verzovaný
 !cases/_template/
+!cases/_template/README.md
+
+# Testovací kopie kanárka (.claude/skills/adversarial-review/evals/kanarek)
+cases/_kanarek/
+
+# Lokální paměť subagentů (registr ověřených citací) – neverzovat
+.claude/agent-memory-local/
+
+# Python
+__pycache__/
+*.pyc
 
 # IDE
 .vscode/

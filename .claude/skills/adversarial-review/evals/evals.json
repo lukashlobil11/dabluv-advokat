@@ -1,0 +1,51 @@
+{
+  "skill_name": "adversarial-review",
+  "evals": [
+    {
+      "id": 1,
+      "name": "kanarek-standard",
+      "prompt": "/adversarial-review _kanarek standard",
+      "expected_output": "Oponentní posudek v cases/_kanarek/oponentura/ odhalí všechny nastražené vady návrhu rozhodnutí o námitkách a neoznačí za vadné to, co je v pořádku.",
+      "files": ["evals/kanarek/"],
+      "expectations": [
+        "Posudek je uložen jako cases/_kanarek/oponentura/adversarial-review-<RRRR-MM-DD>.md a obsahuje všechny oddíly šablony assets/sablona-oponentury.md",
+        "Rozhodnutí ÚOHS č. j. ÚOHS-99999/2031/500 ze dne 12. 3. 2020 je v protokolu ❌ (formálně nemožné: rok 2031 je v budoucnosti a datum předchází roku v č. j.) a vedeno jako DEVASTUJÍCÍ slabina",
+        "Rozsudek č. j. 4 As 210/2022-45 je označen ❌ nebo ❓ a posudek upozorňuje, že datum 3. 2. 2021 předchází roku spisové značky 2022",
+        "§ 312 odst. 2 ZZVZ je označen jako neexistující ustanovení (ZZVZ končí § 279)",
+        "Je zachycen rozpor data uveřejnění Vysvětlení ZD č. 2: návrh uvádí 10. 3. 2026, spis 17. 3. 2026",
+        "Je zachyceno, že tvrzení o prodloužení lhůty o 7 dní odporuje spisu (lhůta se nemění) i bodu 7 návrhu",
+        "Je zachyceno, že Vysvětlení ZD č. 2 nahradilo text technické zprávy (revize 1), takže tvrzení 'nešlo o změnu zadávacích podmínek' odporuje spisu a otevírá riziko podle § 99 ZZVZ",
+        "Úvaha 'žádný jiný dodavatel námitky nepodal, proto byla ZD srozumitelná' je označena jako logická chyba",
+        "Výrok o stěžovateli ('podává účelové námitky ve všech zakázkách v regionu') je označen jako argumentum ad hominem nebo strategické riziko",
+        "Bod 9 je označen jako obecné tvrzení bez subsumpce a posudek upozorňuje na riziko nepřiměřenosti referencí (3 × 8 mil. Kč při PH 9,8 mil. Kč)",
+        "Legislativní zkratka „ZVZZ“ je označena jako překlep (text dále používá ZZVZ)",
+        "Citace § 36 odst. 3 ZZVZ je vyhodnocena jako správná (✅) a není z ní vyrobena slabina; včasnost námitek (bod 1) není chybně napadena",
+        "Posudek neobsahuje žádné č. j., které by nebylo ve vstupu ani nemělo URL z ověření (žádná smyšlená judikatura)",
+        "Podklady vznikly v cases/_kanarek/oponentura/_podklady/ (citace.md, mapa-argumentace.md, prehled-spisu.md) a v posudku je uvedeno, kteří agenti a modely pracovali"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "kanarek-rychly-bez-klicoveho-slova",
+      "prompt": "mrkni se na cases/_kanarek/argumentace/rozhodnuti-o-namitkach-navrh.md jako protistrana, jen rychle to hlavní, chci to dneska odeslat",
+      "expected_output": "Skill se spustí, i když uživatel neřekl slovo oponentura, poběží v rychlém režimu bez subagentů a zachytí hlavní formální vady.",
+      "files": ["evals/kanarek/"],
+      "expectations": [
+        "Skill adversarial-review se aktivuje",
+        "Běží v rychlém režimu: nespouští agenty overovatel-citaci, reserse-protiargumentu, oponent ani simulator-rozhodnuti",
+        "Posudek zachytí nejméně ÚOHS-99999/2031/500, § 312 ZZVZ a rozpor dat Vysvětlení ZD č. 2",
+        "Rozhodnutí neověřená na webu nejsou označena ✅"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "negativni-verifikace-ai",
+      "prompt": "Tohle mi napsal ChatGPT k námitkám, ověř prosím jen ty citace rozsudků, jestli vůbec existují: rozsudek NSS č. j. 2 Afs 67/2010-105 ze dne 25. 1. 2011 …",
+      "expected_output": "Jde o ověření výstupu jiné AI – má se použít skill verifikace-vystupu, ne adversarial-review.",
+      "files": [],
+      "expectations": [
+        "Spustí se skill verifikace-vystupu, nikoli adversarial-review"
+      ]
+    }
+  ]
+}

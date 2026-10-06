@@ -6,25 +6,26 @@ Workspace je určen pro právníky a právní poradce specializované na adminis
 
 ## 🎯 Funkce
 
-### 1. **Právní analýza zadávacího řízení** (`/skill pravni-analyza`)
+### 1. **Právní analýza zadávacího řízení** (`/pravni-analyza`)
 - Systematické posouzení legality zadávacího řízení
 - Analýza kvalifikačních předpokladů, technických podmínek a hodnotících kritérií
 - Identifikace právních rizik s kategorizací závažnosti
 - Zjištění problémových oblastí a doporučení na nápravu
 
-### 2. **Adversarial Review — Ďáblův advokát** (`/skill adversarial-review`)
-- Kritické testování odolnosti právní argumentace
-- Simulace pozice protistrany (navrhovatel, ÚOHS, správní soud)
-- Identifikace slabých míst v argumentaci
-- Konkrétní doporučení na posílení argumentů
+### 2. **Adversarial Review — Ďáblův advokát** (`/adversarial-review [case] [role] [režim]`)
+- Kritické testování odolnosti právní argumentace z pozice protistrany (navrhovatel, ÚOHS, předseda ÚOHS, správní soud, dotační kontrolor)
+- Tři režimy: `rychly` (jen hlavní model), `standard` (výchozí), `hloubkovy` (tři nezávislí oponenti + nezávislá simulace rozhodnutí)
+- Odstupňované modely: **Opus 5.5** útočí, konsoliduje a simuluje rozhodnutí; **Sonnet 5.5** ověřuje citace a rešeršuje; **Haiku 4.5** připravuje podklady a formálně kontroluje posudek
+- Deterministický rejstřík citací odhalí formálně nemožné citace (rok v budoucnosti, datum před rokem sp. zn., § nad rozsah ZZVZ) i přepsané legislativní zkratky
+- Výstup: oponentní posudek se slabinami seřazenými podle závažnosti, protokolem ověření citací a simulací rozhodnutí
 
-### 3. **Rešerše rozhodovací praxe ÚOHS** (`/skill reserse-uohs`)
+### 3. **Rešerše rozhodovací praxe ÚOHS** (`/reserse-uohs`)
 - Vyhledávání relevantních rozhodnutí ÚOHS
 - Zpracování a kategorizace nalezené judikatury
 - Syntéza rozhodovací praxe k právnímu problému
 - Identifikace trendů v rozhodování
 
-### 4. **Verifikace výstupů z externích AI** (`/skill verifikace-vystupu`)
+### 4. **Verifikace výstupů z externích AI** (`/verifikace-vystupu`)
 - Fact-checking právních argumentací z ChatGPT, Gemini a jiných AI
 - Ověřování správnosti citací zákonů a rozhodnutí
 - Analýza kvality právní argumentace
@@ -34,12 +35,25 @@ Workspace je určen pro právníky a právní poradce specializované na adminis
 
 ```
 vz-legal-workspace/
-├── CLAUDE.md                          # Hlavní instrukce
-├── .claude/skills/                    # Čtyři AI skills
-│   ├── pravni-analyza/SKILL.md
-│   ├── adversarial-review/SKILL.md
-│   ├── reserse-uohs/SKILL.md
-│   └── verifikace-vystupu/SKILL.md
+├── CLAUDE.md                          # Hlavní instrukce, modelová politika
+├── .claude/
+│   ├── skills/                        # Čtyři AI skills
+│   │   ├── pravni-analyza/SKILL.md
+│   │   ├── adversarial-review/        # Ďáblův advokát
+│   │   │   ├── SKILL.md               # Orchestrace (Opus 5.5)
+│   │   │   ├── references/            # Role oponentů, kontrolní otázky A–G
+│   │   │   ├── assets/                # Šablona oponentního posudku
+│   │   │   ├── scripts/               # Převod podkladů, rejstřík citací (Python)
+│   │   │   └── evals/                 # Testovací „kanárek“ s nastraženými chybami
+│   │   ├── reserse-uohs/SKILL.md
+│   │   └── verifikace-vystupu/SKILL.md
+│   └── agents/                        # Subagenti s pevně přiřazeným modelem
+│       ├── oponent.md                 # Opus 5.5
+│       ├── simulator-rozhodnuti.md    # Opus 5.5
+│       ├── overovatel-citaci.md       # Sonnet 5.5
+│       ├── reserse-protiargumentu.md  # Sonnet 5.5
+│       ├── priprava-podkladu.md       # Haiku 4.5
+│       └── formalni-kontrola.md       # Haiku 4.5
 ├── cases/                             # Jednotlivé případy
 │   ├── _template/                     # Šablona pro nový case
 │   │   ├── README.md                  # Popis case
@@ -80,14 +94,14 @@ cp -r cases/_template cases/nazev-muj-case
 
 3. **Automatická právní analýza**
    ```
-   /skill pravni-analyza
+   /pravni-analyza
    ```
    - Skill čte z `zadani/`, analyzuje dokumenty
    - Výstup → `analyza/pravni-analyza-[datum].md`
 
 4. **Rešerše rozhodovací praxe** (opt.)
    ```
-   /skill reserse-uohs
+   /reserse-uohs
    ```
    - Vyhledá relevantní rozhodnutí ÚOHS
    - Výstup → `reserse/reserse-[tema]-[datum].md`
@@ -98,11 +112,12 @@ cp -r cases/_template cases/nazev-muj-case
 
 6. **Testování argumentace — Ďáblův advokát**
    ```
-   /skill adversarial-review
+   /adversarial-review nazev-muj-case standard
    ```
-   - Skill napadá tvou argumentaci
-   - Identifikuje slabiny a navrhuje posílení
-   - Výstup → `oponentura/adversarial-review-[datum].md`
+   - Role oponenta se odvodí z fáze řízení (nebo ji zadej: `navrhovatel`, `uohs`, `predseda`, `soud`, `kontrolor`, `vse`)
+   - Pro zásadní podání (návrh, rozklad, žaloba) použij režim `hloubkovy`
+   - Skill napadá tvou argumentaci, ověřuje citace a simuluje rozhodnutí
+   - Výstup → `oponentura/adversarial-review-[datum].md`, pracovní podklady → `oponentura/_podklady/`
 
 7. **Finální úpravy**
    - Přepracuješ argumentaci na základě oponentury
@@ -119,7 +134,8 @@ cp -r cases/_template cases/nazev-muj-case
 ### 🔒 Ochrana citlivých údajů
 - `.gitignore` filtruje všechny case dokumenty (až na šablonu)
 - Můžeš bezpečně pracovat s real case bez rizika leakage
-- Apenas kostra + reference jsou na GitHubu
+- Na GitHubu je jen kostra a reference
+- Lokální paměť agenta `overovatel-citaci` (registr ověřených citací, `.claude/agent-memory-local/`) se také neverzuje
 
 ### 📚 Reference
 - **Právní rámec:** Klíčová ustanovení ZZVZ, procesní lhůty, zásady
@@ -128,8 +144,11 @@ cp -r cases/_template cases/nazev-muj-case
 
 ## 🛠️ Technické požadavky
 
-- **Claude Code** s přístupem k Claude Opus 4.6+ (nebo jiný Haiku/Sonnet)
-- **Přístup k web search** pro `/skill reserse-uohs` (volitelné, ale doporučené)
+- **Claude Code** (aktuální verze) s přístupem k modelům **Opus 5.5** (hlavní), **Sonnet 5.5** a **Haiku 4.5**
+- Claude Code spouštěj ve složce `vz-legal-workspace` (v aplikaci ji otevři jako pracovní složku) — jen tak se spolehlivě načte `CLAUDE.md` a najdou se subagenti z `.claude/agents/`
+- Subagenty Claude Code hledá od pracovního adresáře směrem nahoru až ke kořeni repozitáře; relace spuštěná v nadřazené složce je nenajde a skill přejde na záložní režim (`general-purpose` + parametr `model`). Změny v existujících agentech se projeví do několika sekund, úplně první vytvoření složky `.claude/agents/` vyžaduje restart relace
+- **Přístup k web search** pro `/reserse-uohs` a ověřování citací (volitelné, ale doporučené)
+- **Python 3.8+** pro skripty skillu `adversarial-review` (jen standardní knihovna; bez Pythonu skill funguje v omezeném režimu)
 - Textový editor (VS Code, Sublime, vim...)
 
 ## 📖 Dokumentace
@@ -149,7 +168,7 @@ cp -r cases/_template cases/nazev-muj-case
 
 ## ⚖️ Právní upozornění
 
-Tento workspace je nástrojem na podporu právní analýzy. Není to právní poradenství a nahrazuje skutečného právníka. Používání předpokládá:
+Tento workspace je nástrojem na podporu právní analýzy. Není to právní poradenství a nenahrazuje skutečného právníka. Používání předpokládá:
 
 - Hluboké porozumění ZZVZ a správnímu řádu
 - Kritické posouzení výstupů (LLM mají tendenci k halucinacím)
@@ -163,5 +182,5 @@ MIT License — viz [LICENSE](LICENSE) pro úplné znění.
 ---
 
 **Autor:** Lukáš Hlobil  
-**Poslední aktualizace:** duben 2026  
+**Poslední aktualizace:** říjen 2026  
 **Technologie:** Claude AI, Python (volitelně), Markdown
